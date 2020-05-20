@@ -133,7 +133,7 @@ class MyGiftsList extends Component {
                   onClick={() => this.handleNewGift()}
                   disabled={this.state.isButtonDisabled}
                 >
-                  Login
+                  Add to my gift list
                 </Button>
             </FormControl>
                 <List className={classes.root}>

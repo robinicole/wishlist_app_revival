@@ -68,8 +68,6 @@ class listGiftsToOffer extends Component {
       }
     handleOfferGift(id){
         const token = localStorage.accessToken;
-        const api_url = process.env.REACT_APP_API_ADDRESS ;
-
         if (token) {
           return fetch(`${api_url}/api/wishlists/${id}/`,{
             method: "PATCH",
@@ -83,7 +81,6 @@ class listGiftsToOffer extends Component {
     }
     handleUnOfferGift(id){
       const token = localStorage.accessToken;
-      const api_url = process.env.REACT_APP_API_ADDRESS ;
       if (token) {
         return fetch(`${api_url}/api/wishlists/${id}/`,{
           method: "DELETE",
