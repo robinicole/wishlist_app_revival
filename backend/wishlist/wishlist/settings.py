@@ -29,7 +29,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'au%)qa0p_2p2!30mi)aa#qv2fp&f=fmch!vv_0f9ge!lru2&j#'
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG=True
 SITE_ID = 1
 REST_USE_JWT = True
 
@@ -141,10 +141,6 @@ CORS_ORIGIN_ALLOW_ALL=True
 ALLOWED_HOSTS = [".herokuapp.com", ".researchthroughdesign.org", "*"]
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-STATIC_URL = '/static/'
-
 try:
     django_heroku.settings(locals())
 except:
