@@ -11,6 +11,7 @@ import { withRouter } from 'react-router-dom';
 
 import ACTIONS from "../modules/action";
 import { connect } from "react-redux";
+import { api_url } from './Constants' ;
 
 const styles = theme =>
   ({
@@ -67,7 +68,6 @@ class Login extends Component {
     handleLogin() {
       const username = this.state.username ;
       const password = this.state.password ;
-      const api_url = process.env.REACT_APP_API_ADDRESS ;
       fetch(`${api_url}/api/token/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -80,13 +80,13 @@ class Login extends Component {
         }
         else {
           this.setState({error: false});
-          this.props.history.push("/gifts_list");
           return response.json()
         }
       }).then(data => {
         this.props.login(username);
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
+        this.props.history.push("/gifts_list");
       }).catch(Error)
 
     };

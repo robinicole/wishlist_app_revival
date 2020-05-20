@@ -1,0 +1,1 @@
+export const api_url = "https://gifts-wishlist-backend.herokuapp.com" ;

@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter} from 'react-router-dom';
+import { BrowserRouter, HashRouter} from 'react-router-dom';
 ReactDOM.render(
-    <BrowserRouter>
+    <HashRouter basename='/wishlist_app/'>
     <App />
-    </BrowserRouter>,
+    </HashRouter>,
   document.getElementById('root')
 );
 

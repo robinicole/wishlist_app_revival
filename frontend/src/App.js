@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute'
 
 
 import { store } from "./modules/store";
+import { api_url } from './components/Constants' ;
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
       logged: false, 
       last_token_refresh: null
     };
+    fetch(`${api_url}`).catch(Error);
   }
   render(){
     return (

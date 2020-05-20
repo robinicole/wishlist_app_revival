@@ -11,6 +11,7 @@ import { withRouter } from 'react-router-dom';
 
 import ACTIONS from "../modules/action";
 import { connect } from "react-redux";
+import { api_url } from './Constants' ;
 
 const styles = theme =>
   ({
@@ -69,7 +70,7 @@ class Register extends Component {
       const username = this.state.username;
       const password = this.state.password;
       const email = this.state.email;
-      fetch('https://gifts-wishlist-backend.herokuapp.com/register', {
+      fetch(`${api_url}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: username, password: password, email: email})

@@ -141,9 +141,10 @@ CORS_ORIGIN_ALLOW_ALL=True
 ALLOWED_HOSTS = [".herokuapp.com", ".researchthroughdesign.org", "*"]
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATIC_URL = '/static/'
+
 try:
     django_heroku.settings(locals())
 except:

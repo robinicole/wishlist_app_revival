@@ -11,7 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-
+import { api_url } from './Constants' ;
 
 const styles = theme =>
   ({
@@ -51,7 +51,6 @@ class MyGiftsList extends Component {
     }
     getWishlist(){
           const token = localStorage.accessToken;
-          const api_url = process.env.REACT_APP_API_ADDRESS ;
           if (token) {
             return fetch(`${api_url}/api/my_gifts/`, {
               method: "GET",
@@ -68,7 +67,6 @@ class MyGiftsList extends Component {
       }
       handleNewGift(){
         const token = localStorage.accessToken;
-        const api_url = process.env.REACT_APP_API_ADDRESS ;
         if (token) {
           return fetch(`${api_url}/api/my_gifts/`,{
             method: "POST",
@@ -84,7 +82,6 @@ class MyGiftsList extends Component {
     }
     handlDeleteGift(id){
         const token = localStorage.accessToken;
-        const api_url = process.env.REACT_APP_API_ADDRESS ;
         if (token) {
           return fetch(`${api_url}/api/my_gifts/${id}`,{
             method: "DELETE",

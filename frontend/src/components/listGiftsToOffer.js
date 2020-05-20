@@ -9,6 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import Container from '@material-ui/core/Container';
 import CardHeader from '@material-ui/core/CardHeader';
+import { api_url } from './Constants' ;
 
 
 const styles = theme =>
@@ -51,7 +52,6 @@ class listGiftsToOffer extends Component {
     }
     getWishlist(){
           const token = localStorage.accessToken;
-          const api_url = process.env.REACT_APP_API_ADDRESS ;
           if (token) {
             return fetch(`${api_url}/api/wishlists/`, {
               method: "GET",
