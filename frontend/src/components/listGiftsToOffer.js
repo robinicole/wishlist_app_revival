@@ -51,8 +51,9 @@ class listGiftsToOffer extends Component {
     }
     getWishlist(){
           const token = localStorage.accessToken;
+          const api_url = process.env.REACT_APP_API_ADDRESS ;
           if (token) {
-            return fetch("https://gifts-wishlist-backend.herokuapp.com/api/wishlists/", {
+            return fetch(`${api_url}/api/wishlists/`, {
               method: "GET",
               headers: {
                 'Content-Type': 'application/json',
@@ -67,8 +68,10 @@ class listGiftsToOffer extends Component {
       }
     handleOfferGift(id){
         const token = localStorage.accessToken;
+        const api_url = process.env.REACT_APP_API_ADDRESS ;
+
         if (token) {
-          return fetch(`https://gifts-wishlist-backend.herokuapp.com/api/wishlists/${id}/`,{
+          return fetch(`${api_url}/api/wishlists/${id}/`,{
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -80,8 +83,9 @@ class listGiftsToOffer extends Component {
     }
     handleUnOfferGift(id){
       const token = localStorage.accessToken;
+      const api_url = process.env.REACT_APP_API_ADDRESS ;
       if (token) {
-        return fetch(`https://gifts-wishlist-backend.herokuapp.com/api/wishlists/${id}/`,{
+        return fetch(`${api_url}/api/wishlists/${id}/`,{
           method: "DELETE",
           headers: {
               'Content-Type': 'application/json',

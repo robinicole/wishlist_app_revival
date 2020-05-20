@@ -1,12 +1,8 @@
-run_backend:
-	cd backend/wishlist/ && pipenv run python manage.py runserver &
+build:
+	docker-compose build
 
-run_frontend: run_backend
-	cd frontend && npm start
+run: build
+	docker-compose up
 
-build_backend:
-	cd backend && docker build -f Dockerfile.backend -t wishlist/backend .
-build_frontend:
-	cd frontend && docker build -f Dockerfile.frontend -t wishlist/frontend .
 
 

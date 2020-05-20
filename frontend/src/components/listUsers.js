@@ -50,8 +50,9 @@ class Users extends Component {
     }
     getUsersList(){
           const token = localStorage.accessToken;
+          const api_url = process.env.REACT_APP_API_ADDRESS ;
           if (token) {
-            return fetch("https://gifts-wishlist-backend.herokuapp.com/api/users/", {
+            return fetch(`${api_url}/api/users/`, {
               method: "GET",
               headers: {
                 'Content-Type': 'application/json',
