@@ -104,7 +104,7 @@ class Login extends Component {
         <React.Fragment>
           <form className={classes.container} noValidate autoComplete="off">
             <Card className={classes.card}>
-              <CardHeader className={classes.header} title="Login App" />
+              <CardHeader className={classes.header} title="Enter your login" />
               <CardContent>
                 <div>
                   <TextField

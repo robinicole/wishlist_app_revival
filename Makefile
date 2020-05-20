@@ -17,4 +17,4 @@ send_to_github_io:
 push_to_github_io:
 	cd $(GITHUB_IO_PATH) && git push
 
-send_and_push_to_gihhub_io: send_to_github_io push_to_github_io
+deploy_to_gihhub_io: send_to_github_io push_to_github_io
