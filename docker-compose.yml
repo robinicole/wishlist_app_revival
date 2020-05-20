@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  backend:
+    ports:
+      - 8000:8000
+    image: wishlist/backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+  frontend:
+    ports:
+      - 3000:3000
+    image: wishlist/frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    environment:
+      - REACT_APP_API_ADDRESS=http://localhost:8000
+      # - REACT_APP_API_ADDRESS=https://gifts-wishlist-backend.herokuapp.com
+    depends_on:
+      - backend 

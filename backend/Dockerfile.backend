@@ -1,0 +1,10 @@
+FROM kennethreitz/pipenv as build
+RUN apt update 
+RUN apt install python3.8 -y
+RUN apt install python3.8-distutils -y 
+ADD . /app
+WORKDIR /app/wishlist/
+EXPOSE 8000
+RUN pipenv install --dev
+RUN pipenv run python manage.py collectstatic
+ENTRYPOINT ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
