@@ -67,7 +67,6 @@ class Login extends Component {
     handleLogin() {
       const username = this.state.username ;
       const password = this.state.password ;
-      console.log(process.env)
       const api_url = process.env.REACT_APP_API_ADDRESS ;
       fetch(`${api_url}/api/token/`, {
         method: 'POST',

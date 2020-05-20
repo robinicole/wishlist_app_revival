@@ -68,8 +68,9 @@ class MyGiftsList extends Component {
       }
       handleNewGift(){
         const token = localStorage.accessToken;
+        const api_url = process.env.REACT_APP_API_ADDRESS ;
         if (token) {
-          return fetch("https://gifts-wishlist-backend.herokuapp.com/api/my_gifts/",{
+          return fetch(`${api_url}/api/my_gifts/`,{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -83,8 +84,9 @@ class MyGiftsList extends Component {
     }
     handlDeleteGift(id){
         const token = localStorage.accessToken;
+        const api_url = process.env.REACT_APP_API_ADDRESS ;
         if (token) {
-          return fetch(`https://gifts-wishlist-backend.herokuapp.com/api/my_gifts/${id}`,{
+          return fetch(`${api_url}/api/my_gifts/${id}`,{
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
