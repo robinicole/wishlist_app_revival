@@ -18,3 +18,6 @@ push_to_github_io:
 	cd $(GITHUB_IO_PATH) && git push
 
 deploy_to_gihhub_io: send_to_github_io push_to_github_io
+
+push_backend_to_heroku:
+	git push heroku `git subtree split --prefix backend  master`:master --force
