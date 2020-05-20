@@ -6,5 +6,7 @@ ADD . /app
 WORKDIR /app/wishlist/
 EXPOSE 8000
 RUN pipenv install --dev
-RUN pipenv run python manage.py collectstatic
+RUN pipenv run python manage.py collectstatic --noinput
+RUN pipenv run python manage.py makemigrations api --noinput
+RUN pipenv run python manage.py migrate --noinput
 ENTRYPOINT ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
