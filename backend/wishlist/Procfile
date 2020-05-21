@@ -1,0 +1,2 @@
+release: cd wishlist && python manage.py migrate
+web: cd wishlist && gunicorn wishlist.wsgi
