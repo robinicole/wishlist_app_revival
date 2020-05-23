@@ -29,7 +29,7 @@ WORKDIR /app/wishlist/
 EXPOSE 8000
 RUN cat Pipfile| grep -v heroku > Pipfile2 && mv Pipfile2 Pipfile
 RUN pipenv install --skip-lock # try to make a successful locking 
-RUN pipenv run python manage.py collectstatic --noinput
+# RUN pipenv run python manage.py collectstatic --noinput
 RUN pipenv run python manage.py makemigrations api --noinput
 RUN pipenv run python manage.py migrate --noinput
 ENTRYPOINT ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
