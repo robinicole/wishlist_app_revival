@@ -8,34 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import Container from '@material-ui/core/Container';
 import CardHeader from '@material-ui/core/CardHeader';
-import { api_url } from './Constants' ;
-
-
-const styles = theme =>
-  ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      width: 400,
-      margin: `${theme.spacing(0)} auto`,
-      marginTop: `${theme.spacing(2)} auto`
-    },
-    loginBtn: {
-      marginTop: theme.spacing(2),
-      flexGrow: 1
-    },
-    header: {
-      textAlign: 'center',
-      background: 'grey',
-      color: '#fff',
-      margin: `${theme.spacing(3)} auto`,
-      marginTop: theme.spacing(3)
-    },
-    card: {
-      marginTop: theme.spacing(10)
-    }
-
-  });
+import { api_url, styles } from './Constants' ;
 
 class Users extends Component {
     constructor(props) {

@@ -11,31 +11,8 @@ import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
-import { api_url } from './Constants' ;
-
-const styles = theme =>
-  ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      width: 400,
-      margin: `${theme.spacing(0)} auto`,
-      marginTop: theme.spacing(10)
-    },
-    loginBtn: {
-      marginTop: theme.spacing(2),
-      flexGrow: 1
-    },
-    header: {
-      textAlign: 'center',
-      background: '#212121',
-      color: '#fff'
-    },
-    card: {
-      marginTop: theme.spacing(10)
-    }
-
-  });
+import { api_url, styles } from './Constants' ;
+import CardHeader from '@material-ui/core/CardHeader';
 
 class MyGiftsList extends Component {
     constructor(props) {
@@ -80,6 +57,7 @@ class MyGiftsList extends Component {
             .catch();
         }
     }
+
     handlDeleteGift(id){
         const token = localStorage.accessToken;
         if (token) {
@@ -117,7 +95,8 @@ class MyGiftsList extends Component {
     render(){
         const { classes } = this.props ;
         return (
-            <div>
+            <Container>
+            <CardHeader className={classes.header} title="My gifts list" />
             <FormControl fullWidth className={classes.container}>
                 <TextField 
                 id="outlined-basic" 
@@ -156,7 +135,7 @@ class MyGiftsList extends Component {
                 </div>
         )}
               </List>
-              </div>
+              </Container>
         )
     }
 }

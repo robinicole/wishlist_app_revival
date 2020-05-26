@@ -11,31 +11,7 @@ import { withRouter } from 'react-router-dom';
 
 import ACTIONS from "../modules/action";
 import { connect } from "react-redux";
-import { api_url } from './Constants' ;
-
-const styles = theme =>
-  ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      width: 400,
-      margin: `${theme.spacing(0)} auto`
-    },
-    loginBtn: {
-      marginTop: theme.spacing(2),
-      flexGrow: 1
-    },
-    header: {
-      textAlign: 'center',
-      background: '#212121',
-      color: '#fff'
-    },
-    card: {
-      marginTop: theme.spacing(10)
-    }
-
-  });
-
+import { api_url, styles } from './Constants' ;
 
 class Login extends Component {
     constructor(props) {
