@@ -32,10 +32,14 @@
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "prettify": "prettier --write .",
+    "lint": "eslint src/**/*.js"
   },
   "devDependencies": {
     "enzyme": "^3.1.0",
+    "eslint": "^7.1.0",
+    "eslint-plugin-react": "^7.20.0",
     "jest": "^21.2.1",
     "react-test-renderer": "^16.0.0"
   },
