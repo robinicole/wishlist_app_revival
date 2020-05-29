@@ -1,3 +1,5 @@
+import jwt from 'jwt-decode'
+
 export const api_url = "https://gifts-wishlist-backend.herokuapp.com";
 export const styles = (theme) => ({
   container: {
@@ -22,3 +24,20 @@ export const styles = (theme) => ({
     marginTop: theme.spacing(10),
   },
 });
+
+export const isAccessTokenExpired = () => 
+  {
+    const token = localStorage.getItem('accessToken');
+    if(token === 'null') {//if there is no token, dont bother
+      return true;
+     }
+    const decodedToken = jwt(token, {complete: true});
+      const dateNow = new Date();
+    if(decodedToken.exp < dateNow.getTime()) 
+    {
+      return false;
+    }
+    else{
+      return true;
+    }
+    }

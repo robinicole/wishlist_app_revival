@@ -3,7 +3,6 @@ import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 function PrivateRoute({ component: Component, ...rest }) {
-  console.log(rest);
   return (
     <Route
       {...rest}

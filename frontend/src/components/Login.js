@@ -11,7 +11,9 @@ import { withRouter } from "react-router-dom";
 
 import ACTIONS from "../modules/action";
 import { connect } from "react-redux";
-import { api_url, styles } from "./Constants";
+import { api_url, styles , isAccessTokenExpired} from "./Constants";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import MyGiftsList from "./listMyGifts";
 
 class Login extends Component {
   constructor(props) {
@@ -36,6 +38,10 @@ class Login extends Component {
 
   componentDidMount() {
     this.updateButton();
+    if (isAccessTokenExpired())
+    {
+      this.props.logout()
+    }
   }
   componentDidUpdate() {
     this.updateButton();
@@ -53,7 +59,7 @@ class Login extends Component {
         if (!response.ok) {
           this.setState({ error: true });
           this.setState({ helperText: "Wrong username/password" });
-          throw new Error("my error");
+          throw new Error("Error, wrong username/password");
         } else {
           this.setState({ error: false });
           return response.json();
@@ -74,7 +80,8 @@ class Login extends Component {
     }
   }
 
-  render() {
+  renderLoginForm()
+  {
     const { classes } = this.props;
     return (
       <React.Fragment>
@@ -125,6 +132,13 @@ class Login extends Component {
       </React.Fragment>
     );
   }
+  render() {
+    if (this.props.logged)
+    {
+      return <MyGiftsList/>
+    }
+    return this.renderLoginForm()
+  }
 }
 const mapStateToProps = (state) => ({
   logged: state.logged,
@@ -132,6 +146,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: (username, jwt_token) => dispatch(ACTIONS.Login(username, jwt_token)),
+  logout: () => dispatch(ACTIONS.Logout()),
 });
 
 export default connect(
