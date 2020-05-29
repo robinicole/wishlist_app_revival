@@ -12,8 +12,9 @@ import { withRouter } from "react-router-dom";
 import ACTIONS from "../modules/action";
 import { connect } from "react-redux";
 import { api_url, styles , isAccessTokenExpired} from "./Constants";
-import CircularProgress from '@material-ui/core/CircularProgress';
 import MyGiftsList from "./listMyGifts";
+import Typography from '@material-ui/core/Typography';
+import Container from "@material-ui/core/Container";
 
 class Login extends Component {
   constructor(props) {
@@ -66,10 +67,9 @@ class Login extends Component {
         }
       })
       .then((data) => {
-        this.props.login(username);
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
-        this.props.history.push("/gifts_list");
+        this.props.login(username);
       })
       .catch(Error);
   }
@@ -85,6 +85,10 @@ class Login extends Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
+        <Container className={classes.container}>
+        <Typography color="inherit" textAlign='center'>
+                        Enter your password/login to give a try ot the wishlist management system 
+                    </Typography>
         <form className={classes.container} noValidate autoComplete="off">
           <Card className={classes.card}>
             <CardHeader className={classes.header} title="Enter your login" />
@@ -129,6 +133,7 @@ class Login extends Component {
             </CardActions>
           </Card>
         </form>
+        </Container>
       </React.Fragment>
     );
   }

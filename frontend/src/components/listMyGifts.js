@@ -11,8 +11,12 @@ import Avatar from "@material-ui/core/Avatar";
 import ImageIcon from "@material-ui/icons/Image";
 import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
-import { api_url, styles } from "./Constants";
+import { api_url, styles , isAccessTokenExpired} from "./Constants";
 import CardHeader from "@material-ui/core/CardHeader";
+import { withRouter } from "react-router-dom";
+
+import ACTIONS from "../modules/action";
+import { connect } from "react-redux";
 
 class MyGiftsList extends Component {
   constructor(props) {
@@ -23,7 +27,9 @@ class MyGiftsList extends Component {
       gift_list: [],
     };
     this.getWishlist();
+    
   }
+
   getWishlist() {
     const token = localStorage.accessToken;
     if (token) {
@@ -40,6 +46,7 @@ class MyGiftsList extends Component {
         .catch();
     }
   }
+
   handleNewGift() {
     const token = localStorage.accessToken;
     if (token) {
@@ -71,11 +78,13 @@ class MyGiftsList extends Component {
         .catch();
     }
   }
+
   handleKeyPress(e) {
     if (e.keyCode === 13 || e.which === 13) {
       this.state.isButtonDisabled || this.handleNewGift();
     }
   }
+  
 
   updateButton() {
     if (this.state.new_gift_name.trim()) {
@@ -88,17 +97,22 @@ class MyGiftsList extends Component {
 
   componentDidMount() {
     this.updateButton();
-  }
-  componentDidUpdate() {
-    this.updateButton();
+    if (isAccessTokenExpired())
+    {
+      this.props.logout()
+    }
   }
 
-  render() {
+  componentDidUpdate() {
+    this.updateButton();
+    if (isAccessTokenExpired())
+    {
+      this.props.logout()
+    }
+  }
+  renderAddGiftForm(){
     const { classes } = this.props;
-    return (
-      <Container>
-        <CardHeader className={classes.header} title="My gifts list" />
-        <FormControl fullWidth className={classes.container}>
+    return (<FormControl fullWidth className={classes.container}>
           <TextField
             id="outlined-basic"
             label="Outlined"
@@ -116,34 +130,64 @@ class MyGiftsList extends Component {
           >
             Add to my gift list
           </Button>
-        </FormControl>
+        </FormControl>)
+  }
+  renderGift(item)
+  {
+    return (<React.Fragment>
+    <Container>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <ImageIcon />
+          </Avatar>
+       </ListItemAvatar>
+        <ListItemText primary={item.name} />
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => this.handlDeleteGift(item.id)}
+        >
+          Delete
+        </Button>
+      </ListItem>
+      <Divider variant="inset" component="li" />
+    </Container>
+  </React.Fragment>)
+  }
+  renderGiftList()
+  {
+    const { classes } = this.props;
+    return (<Container>
+        <CardHeader className={classes.header} title="My gifts list" />
+        {this.renderAddGiftForm()}
         <List className={classes.root}>
-          {this.state.gift_list.map((item, ix) => (
-            <div>
-              <Container>
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <ImageIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={item.name} secondary="Jan 9, 2014" />
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => this.handlDeleteGift(item.id)}
-                  >
-                    Delete
-                  </Button>
-                </ListItem>
-                <Divider variant="inset" component="li" />
-              </Container>
-            </div>
-          ))}
+          {this.state.gift_list.map((item, ix) => this.renderGift(item))}
         </List>
-      </Container>
-    );
+      </Container> )
+  }
+  render() {
+    try {
+      return this.renderGiftList()
+    }
+    catch (error) {
+      this.props.logout() ; 
+      return null
+    }
   }
 }
 
-export default withStyles(styles)(MyGiftsList);
+const mapStateToProps = (state) => ({
+  logged: state.logged,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  login: (username, jwt_token) => dispatch(ACTIONS.Login(username, jwt_token)),
+  logout: () => dispatch(ACTIONS.Logout()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(withStyles(styles, { withTheme: true })(MyGiftsList)));
+

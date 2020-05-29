@@ -3,11 +3,12 @@ import jwt from 'jwt-decode'
 export const api_url = "https://gifts-wishlist-backend.herokuapp.com";
 export const styles = (theme) => ({
   container: {
+    justifyContent: 'center',
     display: "flex",
     flexWrap: "wrap",
-    width: 400,
+    width: 500,
     margin: `${theme.spacing(0)} auto`,
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(5),
   },
   loginBtn: {
     marginTop: theme.spacing(2),
