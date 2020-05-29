@@ -13,5 +13,7 @@ RUN npm install
 RUN npm install react-scripts@3.4.1 -g --silent
 # add app
 COPY . ./
-# RUN echo 'export const api_url = "http://localhost:8000" ;' >>  /app/src/components/Constants.js
+ENV var ''
+RUN sed -i "3s/.*/export const api_url = \"http:\/\/localhost:8000\" ;/" src/components/Constants.js
+# RUN echo 
 CMD ["npm", "start"]
