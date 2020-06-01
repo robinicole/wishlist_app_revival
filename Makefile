@@ -3,6 +3,8 @@ GITHUB_IO_PATH=~/github/robinicole.github.io/wishlist_app
 build:
 	docker-compose build
 
+prettify_frontend:
+	cd frontend/src/ prettier --write .
 run: build
 	docker-compose up
 
