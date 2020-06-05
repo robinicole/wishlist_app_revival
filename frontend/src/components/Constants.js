@@ -13,7 +13,7 @@ export const styles = (theme) => ({
     flexGrow: 1,
   },
   header: {
-    textAlign: "center",
+    textAlign: "left",
     background: "black",
     color: "#fff",
     margin: `${theme.spacing(3)} auto`,

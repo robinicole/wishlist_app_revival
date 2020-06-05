@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
+import { List, Card , Grid }  from "@material-ui/core";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -14,6 +14,7 @@ import Container from "@material-ui/core/Container";
 import { api_url, styles , isAccessTokenExpired} from "./Constants";
 import CardHeader from "@material-ui/core/CardHeader";
 import { withRouter } from "react-router-dom";
+import { CardGiftcardIcon } from '@material-ui/icons';
 
 import ACTIONS from "../modules/action";
 import { connect } from "react-redux";
@@ -159,11 +160,23 @@ class MyGiftsList extends Component {
   {
     const { classes } = this.props;
     return (<Container>
-        <CardHeader className={classes.header} title="My gifts list" />
+      <Grid container spacing={4}  display="row">
+        <Grid item xs={12} md={6}>
+      <Card >
+        <CardHeader className={classes.header} title="Add a gift to my list" />
         {this.renderAddGiftForm()}
+        </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+        <Card >
+        <CardHeader className={classes.header} title="My Gift List" />
+
         <List className={classes.root}>
           {this.state.gift_list.map((item, ix) => this.renderGift(item))}
         </List>
+        </Card>
+        </Grid>
+        </Grid>
       </Container> )
   }
   render() {

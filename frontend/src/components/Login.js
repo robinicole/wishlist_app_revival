@@ -89,8 +89,21 @@ class Login extends Component {
         <CssBaseline />
         <Container className={classes.container}>
         <Grid container spacing={4}>
-        <Grid item key={1} xs style={{paddingLeft: 0, paddingRight: 0}}>
-        <Card className={classes.card} marginBottom={10}>
+        <Grid item  xs={12} md={6}>
+        <Card className={classes.card}  marginLeft={3}>
+          <CardHeader title='Welcom to the wishlist management!'></CardHeader>
+                  <CardContent>
+                  <Typography variant="body1" color="textPrimary" paragraph>
+                        Please enter your Login, 
+                        to discover the gifts your friends are
+                         looking for and to suggest them idea of
+                          the gift that will make your christmas special
+                    </Typography>
+                    </CardContent>
+        </Card>
+        </Grid>
+        <Grid item key={1} xs={12} md={6}>
+        <Card className={classes.card}>
         <form noValidate autoComplete="off" >
           <Card className={classes.card}>
             <CardHeader className={classes.header} title="Enter your login" />
@@ -137,13 +150,7 @@ class Login extends Component {
         </form>
         </Card>
         </Grid>
-        <Grid item xs>
-        <Card className={classes.card}>
-                  <Typography variant="h5" align="center" justify="center" color="textPrimary" paragraph>
-                        Enter your password/login to give a try ot the wishlist management system 
-                    </Typography>
-        </Card>
-        </Grid>
+       
         </Grid>
         </Container>
       </React.Fragment>
