@@ -21,10 +21,11 @@ export const styles = (theme) => ({
   },
   card: {
     height: '100%',
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
     margin: `${theme.spacing(0)} auto`,
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(0)
   },
 });
 

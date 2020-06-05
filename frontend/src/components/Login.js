@@ -89,9 +89,9 @@ class Login extends Component {
         <CssBaseline />
         <Container className={classes.container}>
         <Grid container spacing={4}>
-        <Grid item key={1} sm>
-        <Card className={classes.card}  alignContent="center" justifyContent="center" marginBottom={10}>
-        <form className={classes.container} noValidate autoComplete="off">
+        <Grid item key={1} xs style={{paddingLeft: 0, paddingRight: 0}}>
+        <Card className={classes.card} marginBottom={10}>
+        <form noValidate autoComplete="off" >
           <Card className={classes.card}>
             <CardHeader className={classes.header} title="Enter your login" />
             <CardContent>
@@ -137,7 +137,7 @@ class Login extends Component {
         </form>
         </Card>
         </Grid>
-        <Grid item sm>
+        <Grid item xs>
         <Card className={classes.card}>
                   <Typography variant="h5" align="center" justify="center" color="textPrimary" paragraph>
                         Enter your password/login to give a try ot the wishlist management system 
