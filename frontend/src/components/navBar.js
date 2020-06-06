@@ -24,11 +24,6 @@ class NavBar extends Component {
                     </Typography>
                     <List component="nav">
                         <ListItem component="div">
-                            <ListItemText inset>
-                                <Typography color="inherit" variant="subtitle1">
-                                    <Link to="/"  color="inherit">Home  <Home /></Link>
-                                </Typography>
-                            </ListItemText>
                             {this.props.logged?
                             <React.Fragment>
                             <ListItemText inset>
@@ -51,11 +46,6 @@ class NavBar extends Component {
                             
                         {!this.props.logged?
                         <React.Fragment>
-                            <ListItemText inset style={{display:'flex', alignContent:'flex-end'}}>
-                                <Typography color="inherit" variant="subtitle1">
-                                    <Link to="/login"  color="inherit"><Book /> Bring me in </Link>
-                                </Typography>
-                            </ListItemText>
                             </React.Fragment>:
                             <ListItemText inset style={{display:'flex', alignContent:'flex-end'}}>
                                 <Logout logoutCallback={() => this.props.logout()}/>
