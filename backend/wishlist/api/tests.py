@@ -39,7 +39,8 @@ class YourTestClass(APITestCase):
             'pk': 1,
             'name': 'test',
             'owner':{'email': 'email@email1.com', 'id': 1, 'username': 'testuser1'},
-                'offered_by': None
+                'offered_by': None,
+                'state': 'NOT OFFERED'
             }
         assert len(response.json()) == 1, response.data
         self.assertEqual(response.json()[0], expected_response)
@@ -65,4 +66,5 @@ class YourTestClass(APITestCase):
         # until they offer it
         response = self.client.patch('/api/wishlists/1/')
         response = self.client.get('/api/wishlists/')
-        assert len(response.json()) == 0, response.json()
+        assert len(response.json()) == 1, response.json()
+        assert response.json()[0]['state'] == 'OFFERED BY ME'

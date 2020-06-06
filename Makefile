@@ -25,3 +25,6 @@ deploy_backend:
 	git push heroku `git subtree split --prefix backend  master`:master --force
 
 deploy: deploy_frontend deploy_backend
+
+test_backend:
+	cd backend/wishlist/ && pipenv run python manage.py test
