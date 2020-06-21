@@ -12,7 +12,7 @@ local_backend:
 	cd backend/wishlist && pipenv run python manage.py runserver 
 
 send_to_github_io:
-	cd frontend && npm run build 
+	cd frontend && SKIP_PREFLIGHT_CHECK=true npm run build 
 	cp -rf frontend/build/* $(GITHUB_IO_PATH)
 	cd $(GITHUB_IO_PATH) && git add --all && git commit -m 'update-react-app'
 

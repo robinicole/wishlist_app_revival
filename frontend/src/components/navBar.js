@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Home, Book } from '@material-ui/icons'
+import { Book } from '@material-ui/icons'
 import { Link } from "react-router-dom";
 import Logout from './Logout'
 import { connect } from "react-redux";

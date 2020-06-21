@@ -11,11 +11,7 @@ import { api_url, styles , isAccessTokenExpired} from "./Constants";
 import MyGiftsList from "./listMyGifts";
 import Typography from '@material-ui/core/Typography';
 import Container from "@material-ui/core/Container";
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Link from '@material-ui/core/Link';
 
 class Login extends Component {
   constructor(props) {

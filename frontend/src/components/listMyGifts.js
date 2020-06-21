@@ -14,7 +14,6 @@ import Container from "@material-ui/core/Container";
 import { api_url, styles , isAccessTokenExpired} from "./Constants";
 import CardHeader from "@material-ui/core/CardHeader";
 import { withRouter } from "react-router-dom";
-import { CardGiftcardIcon } from '@material-ui/icons';
 
 import ACTIONS from "../modules/action";
 import { connect } from "react-redux";
@@ -159,9 +158,10 @@ class MyGiftsList extends Component {
   renderGiftList()
   {
     const { classes } = this.props;
-    return (<Container>
+    return (<Container className={classes.container}>
       <Grid container spacing={4}  display="row">
         <Grid item xs={12} md={6}>
+          
       <Card >
         <CardHeader className={classes.header} title="Add a gift to my list" />
         {this.renderAddGiftForm()}

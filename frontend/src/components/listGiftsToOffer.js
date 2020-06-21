@@ -8,7 +8,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ImageIcon from "@material-ui/icons/Image";
 import Container from "@material-ui/core/Container";
-import CardHeader from "@material-ui/core/CardHeader";
+import { CardHeader, Grid, Card } from "@material-ui/core";
 import { api_url, styles } from "./Constants";
 
 class listGiftsToOffer extends Component {
@@ -149,8 +149,10 @@ class listGiftsToOffer extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <Container>
-        <div className={classes.root}>
+      <Container className={classes.container }>
+        <Grid container spacing={4}  display="row">
+        <Grid item xs={12} md={12}>
+      <Card >
           <CardHeader className={classes.header} title="Gifts to offer" />
 
           <List className={classes.root}>
@@ -161,7 +163,9 @@ class listGiftsToOffer extends Component {
               </div>
             ))}
           </List>
-        </div>
+          </Card>
+          </Grid>
+        </Grid>
       </Container>
     );
   }
