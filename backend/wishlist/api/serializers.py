@@ -8,6 +8,11 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'username', 'email')
 
+class UserSerializerWithPwd(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'password')
+
 class GiftSerializer(serializers.ModelSerializer):
     class Meta:
         model = Gifts

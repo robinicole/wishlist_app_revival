@@ -4,7 +4,7 @@ from rest_framework import mixins
 from django.db.models import Q
 
 from api.models import Gifts
-from api.serializers import GiftSerializer, GiftToOfferSerializer, UserSerializer
+from api.serializers import GiftSerializer, GiftToOfferSerializer, UserSerializer, UserSerializerWithPwd
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 
@@ -16,7 +16,7 @@ from django.contrib.auth.models import User
 
 @api_view(['POST'])
 def create_auth(request):
-    serialized = UserSerializer(data=request.data)
+    serialized = UserSerializerWithPwd(data=request.data)
     if serialized.is_valid():
         get_user_model().objects.create_user(
             serialized.data['username'],

@@ -8,6 +8,9 @@ services:
       context: ./backend
       dockerfile: Dockerfile.backend
   frontend:
+    # Necessary to run a dev server
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
     ports:
       - 3000:3000
     image: wishlist/frontend
