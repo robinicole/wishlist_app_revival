@@ -146,4 +146,6 @@ try:
     django_heroku.settings(locals())
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 except:
-    pass
+    STATIC_URL = '/static/'
+    PROJECT_ROOT = os.path.dirname(__file__)
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
